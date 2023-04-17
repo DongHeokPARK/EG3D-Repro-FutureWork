@@ -1,9 +1,11 @@
 # EG3D-Repro-FutureWork
 Repro - small / Future Work - Styleformer Generator
 
+
 Reproduction : eg3d-small
 
 We reduced about 1/3 parameters of EG3D Generator and 40% parameters EG3D Discriminator, for training the model under the limited GPU resource(one 3090).
+
 
 Future Work : Styleformer model in generator backbone
 
