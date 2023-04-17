@@ -1,0 +1,48 @@
+gpu ram 활용이 풀로 안되는데 이유
+
+<수정 사항>
+    file                            line        비고
+1. image 크기 64
+    /eg3d/train.py                  170         neural_rendering_resolution_initial
+    /eg3d/train.py                  171         neural_rendering_resolution_final
+    /eg3d/train.py                  183         Number of fp16 layers in superresolution
+    /eg3d/train.py                  279, 280    elif c.training_set_kwargs.resolution == 64:
+
+2. z_dim, w_dim
+    /eg3d/train.py                  222         z_dim : 512->128, w_dim : 512->128
+    /eg3d/legacy.py                 125         z_dim : 512->128
+    /eg3d/legacy.py                 125         w_dim : 512->128
+    /eg3d/superresolution           139         block 0의 w차원 : 512 ->128
+    /eg3d/superresolution           139         block 0의 w차원 : 512 ->128
+    /eg3d/superresolution           71,73       block 0의 w차원 : 512 ->128
+    /eg3d/superresolution           104,106     block 0의 w차원 : 512 ->128
+    
+
+3. triplane 차원 : 32 -> 8
+    /eg3d/triplane                  40 ~ 42     32->8
+    /eg3d/triplane                  75          32->8
+    /eg3d/triplane                  95          32->8
+    /eg3d/triplane                  101         32->8
+
+4. mapping network layer 수
+    /eg3d/train.py                  154         default=8
+    /eg3d/legacy.py                 139         mapping network layer수 : 8 -> 4
+
+5. block resolution
+    /eg3d/training/triplane.py      40          triplane 사이즈 : 256 -> 64   
+
+6. ray sampling                     
+    /eg3d/training/triplane.py      325, 326    coarse : 64->32, fine : 64->-1
+
+7. channel max
+    /eg3d/train.py                  151         default : 512->128
+    /eg3d/legacy.py                 131, 228    512->128
+    /eg3d/training/networks_stylegan2.py 475    512->128
+    /eg3d/training/networks_stylegan2.py 743    512->128
+
+8. kimg 수
+    /eg3d/train.py                  160         default : 25000 -> 25
+<수정 해볼만한 사항>
+
+###
+
