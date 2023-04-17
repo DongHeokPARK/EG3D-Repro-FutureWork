@@ -1,5 +1,5 @@
 # Reproduction : eg3d-small
-We reduced about 1/3 parameters of EG3D Generator and 40% parameters EG3D Discriminator, for training the model under the limited GPU resource(only one 3090). Of course, the performance of eg3d(i.e. FID score) is reduced, but still show better result than other 3d-aware gan(Pi-gan, GRAF).
+We reduced about 1/3 parameters of EG3D Generator and 40% parameters EG3D Discriminator, for training the model under limited GPU resource(only one 3090). Of course, the performance of eg3d(i.e. FID score) is reduced, but still show better result than other 3d-aware gan(Pi-gan, GRAF).
 
 
 # Future Work : eg3d-styleformer
